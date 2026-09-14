@@ -158,5 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+// Карусель для "Obyekt tipinə görə axtarın" (Скролл вправо)
+    const propertyScroll = document.querySelector('.property-scroll');
+    const rightArrow = document.querySelector('.scroll-arrow.right-arrow');
 
+    if (propertyScroll && rightArrow) {
+        rightArrow.addEventListener('click', () => {
+            propertyScroll.scrollBy({
+                left: 320,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
