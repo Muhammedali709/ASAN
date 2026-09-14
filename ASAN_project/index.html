@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evrezerv.az | Azərbaycanda Mükəmməl Qalma Yerinizi Tapın</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#">Evrezerv.az</a>
+            </div>
+            
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <button class="nav-btn"><i class="fa-solid fa-globe"></i> AZ <i class="fa-solid fa-chevron-down text-small"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Azərbaycan dili</a>
+                        <a href="#">English</a>
+                        <a href="#">Русский</a>
+                        <a href="#">Türkçe</a>
+                    </div>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="nav-btn">AZN <i class="fa-solid fa-chevron-down text-small"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">AZN</a>
+                        <a href="#">USD</a>
+                        <a href="#">EUR</a>
+                        <a href="#">TRY</a>
+                    </div>
+                </div>
+                
+                <button class="btn-outline">Elan əlavə et</button>
+                <button class="btn-primary login-btn">Daxil ol</button>
+            </nav>
+            
+            <button class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Seç, rezerv et, istirahət et!</h1>
+            <p>Bütün ölkə üzrə mənzillər, evlər, villalar və digər kirayə əmlakları kəşf edin və rahatlıqla rezervasiya edin.</p>
+        </div>
+    </section>
+
+    <!-- Search & Filter Panel -->
+    <section class="search-section">
+        <div class="search-container">
+            <form id="searchForm" class="search-grid">
+                
+                <div class="input-group location-group">
+                    <label>Məkan</label>
+                    <select required>
+                        <option value="" disabled selected>Bölgə və ya şəhər seçin</option>
+                        <option value="baku">Bakı</option>
+                        <option value="qabala">Qəbələ</option>
+                        <option value="quba">Quba</option>
+                        <option value="sheki">Şəki</option>
+                        <option value="gence">Gəncə</option>
+                        <option value="qusar">Qusar</option>
+                        <option value="shamaxi">Şamaxı</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Giriş tarixi</label>
+                    <input type="date">
+                </div>
+
+                <div class="input-group">
+                    <label>Çıxış tarixi</label>
+                    <input type="date">
+                </div>
+
+                <div class="input-group">
+                    <label>Qonaqlar</label>
+                    <input type="number" min="1" placeholder="1 qonaq">
+                </div>
+
+                <div class="input-group">
+                    <label>Otaqlar</label>
+                    <input type="number" min="1" placeholder="1 otaq">
+                </div>
+
+                <div class="input-group">
+                    <label>Obyekt tipi</label>
+                    <select>
+                        <option value="all">Bütün tiplər</option>
+                        <option value="apartment">Mənzil</option>
+                        <option value="house">Ev</option>
+                        <option value="villa">Villa</option>
+                        <option value="hotel">Otel</option>
+                        <option value="village">İstirahət mərkəzi</option>
+                    </select>
+                </div>
+
+                <div class="input-group price-group">
+                    <label>Qiymət aralığı (AZN)</label>
+                    <div class="price-inputs">
+                        <input type="number" placeholder="Min">
+                        <span>-</span>
+                        <input type="number" placeholder="Max">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Depozit</label>
+                    <select>
+                        <option value="any">Fərq etməz</option>
+                        <option value="required">Tələb olunur</option>
+                        <option value="not_required">Tələb olunmur</option>
+                    </select>
+                </div>
+
+                <div class="input-group btn-group">
+                    <button type="submit" class="btn-search">Elan axtar <i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Search Results (Initially Hidden) -->
+    <section id="search-results" class="results-section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sizin üçün tapdığımız elanlar</h2>
+                <p>Seçdiyiniz kriteriyalara uyğun ən yaxşı təkliflər.</p>
+            </div>
+            <div class="results-grid" id="results-grid">
+                <!-- Cards injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Types -->
+    <section class="property-types container section-padding">
+        <h2>Obyekt tipinə görə axtarın</h2>
+        <div class="property-wrapper">
+            <div class="property-scroll">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Hotels">
+                    <h3>Otellər</h3>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80" alt="Apartments">
+                    <h3>Mənzillər</h3>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Villas">
+                    <h3>Villalar</h3>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=600&q=80" alt="Houses">
+                    <h3>Evlər</h3>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=600&q=80" alt="Holiday Villages">
+                    <h3>İstirahət mərkəzləri</h3>
+                </div>
+            </div>
+            <button class="scroll-arrow right-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="destinations container section-padding">
+        <h2>Populyar istiqamətlər</h2>
+        <p class="section-subtitle">Azərbaycanın ən sevilən bölgələrini kəşf edin.</p>
+        <div class="destination-grid">
+            
+            <div class="dest-card large-card">
+                <img src="images/baku.jpg" alt="Bakı">
+                <div class="dest-info">
+                    <h3>Bakı</h3>
+                    <p>Paytaxtın dinamik həyatı və tarixi məkanları.</p>
+                </div>
+            </div>
+
+            <div class="dest-card">
+                <img src="images/qabala.jpg" alt="Qəbələ">
+                <div class="dest-info">
+                    <h3>Qəbələ</h3>
+                    <p>Dağlar, təbiət və sakit istirahət.</p>
+                </div>
+            </div>
+
+            <div class="dest-card">
+                <img src="images/quba.jpg" alt="Quba">
+                <div class="dest-info">
+                    <h3>Quba</h3>
+                    <p>Şimalın təbiətini kəşf edin.</p>
+                </div>
+            </div>
+
+            <div class="dest-card">
+                <img src="images/sheki.jpg" alt="Şəki">
+                <div class="dest-info">
+                    <h3>Şəki</h3>
+                    <p>Tarixi memarlıq və dağ havası.</p>
+                </div>
+            </div>
+
+            <div class="dest-card">
+                <img src="images/gence.jpg" alt="Gəncə">
+                <div class="dest-info">
+                    <h3>Gəncə</h3>
+                    <p>Qədim tarix və mədəniyyət.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Discovery / Featured -->
+    <section class="discovery-section section-padding">
+        <div class="container discovery-flex">
+            <div class="discovery-text">
+                <h2>Azərbaycanda yeni yerlər kəşf edin</h2>
+                <p>İstər ailəvi tətil, istər qısamüddətli iş səfəri və ya həftəsonu qaçışı olsun, hər ehtiyaca uyğun minlərlə məkanı bir platformada birləşdirdik.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <div>
+                            <h4>Təsdiqlənmiş Elanlar</h4>
+                            <p>Bütün obyektlər güvənlidir.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <h4>Asan Rezervasiya</h4>
+                            <p>Bir neçə kliklə yerinizi ayırın.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <div>
+                            <h4>Yerli İstiqamətlər</h4>
+                            <p>Azərbaycanın hər bir küncündə.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-house"></i>
+                        <div>
+                            <h4>Geniş Seçim</h4>
+                            <p>Mənzil, villa və kotteclər.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discovery-image">
+                <div class="abstract-map-box">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Azərbaycan" class="rounded-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Dəstək</h3>
+                <ul>
+                    <li><a href="#">Kömək Mərkəzi</a></li>
+                    <li><a href="#">Bizimlə əlaqə</a></li>
+                    <li><a href="#">Rezervasiyanın idarə edilməsi</a></li>
+                    <li><a href="#">Təhlükəsizlik</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Kəşf Et</h3>
+                <ul>
+                    <li><a href="#">Populyar istiqamətlər</a></li>
+                    <li><a href="#">Səyahət bələdçiləri</a></li>
+                    <li><a href="#">Xüsusi təkliflər</a></li>
+                    <li><a href="#">Yeni elanlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Tərəfdaşlar Üçün</h3>
+                <ul>
+                    <li><a href="#">Obyektinizi əlavə edin</a></li>
+                    <li><a href="#">Tərəfdaş girişi</a></li>
+                    <li><a href="#">Tərəfdaş dəstəyi</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Şirkət</h3>
+                <ul>
+                    <li><a href="#">Haqqımızda</a></li>
+                    <li><a href="#">Karyera</a></li>
+                    <li><a href="#">Əlaqə</a></li>
+                    <li><a href="#">Davamlılıq</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Hüquqi</h3>
+                <ul>
+                    <li><a href="#">Məxfilik Siyasəti</a></li>
+                    <li><a href="#">İstifadə Şərtləri</a></li>
+                    <li><a href="#">Kuki Siyasəti</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2026 Evrezerv.az. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
